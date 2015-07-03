@@ -51,8 +51,10 @@
     NSArray *children = [self.document.rootElement children];
     XCTAssertNotNil(children, @"children should not be nil");
     XCTAssertTrue([children count] == 2, @"root element has more than two children");
-    XCTAssertEqualObjects([[children firstObject] tag], @"head", @"head not first child of html");
-    XCTAssertEqualObjects([[children lastObject] tag], @"body", @"body not last child of html");
+    ONOXMLElement *firstObject = (ONOXMLElement *)[children firstObject];
+    XCTAssertEqualObjects([firstObject tag], @"head", @"head not first child of html");
+    ONOXMLElement *lastObject = (ONOXMLElement *)[children lastObject];
+    XCTAssertEqualObjects([lastObject tag], @"body", @"body not last child of html");
 }
 
 - (void)testTitleXPath {
